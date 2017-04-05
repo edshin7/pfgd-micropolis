@@ -123,6 +123,7 @@ public class Micropolis
 	int stadiumCount;
 	int coalCount;
 	int nuclearCount;
+	int windCount;   // new addition for Assignment 3
 	int seaportCount;
 	int airportCount;
 
@@ -536,6 +537,7 @@ public class Micropolis
 		stadiumCount = 0;
 		coalCount = 0;
 		nuclearCount = 0;
+		windCount = 0;   // new Addition for Assignment 3
 		seaportCount = 0;
 		airportCount = 0;
 		powerPlants.clear();
@@ -1031,7 +1033,8 @@ public class Micropolis
 		// of powerplants connected to your city.
 		//
 
-		int maxPower = coalCount * 700 + nuclearCount * 2000;
+		// addition for Assignment 3
+		int maxPower = coalCount * 700 + nuclearCount * 2000 + windCount * 300; // add windPCount * (power cells)
 		int numPower = 0;
 
 		// This is kind of odd algorithm, but I haven't the heart to rewrite it at
@@ -2096,6 +2099,7 @@ public class Micropolis
 	{
 		coalCount = 0;
 		nuclearCount = 0;
+		windCount = 0; // addition for Assignment 3
 
 		powerPlants.clear();
 		for (int y = 0; y < map.length; y++) {
@@ -2107,6 +2111,12 @@ public class Micropolis
 				}
 				else if (tile == POWERPLANT) {
 					coalCount++;
+					powerPlants.add(new CityLocation(x,y));
+				}
+				
+				// Addition for Assignment 3
+				else if(tile == NEW_BUILDING) {
+					windCount++;
 					powerPlants.add(new CityLocation(x,y));
 				}
 			}

@@ -86,7 +86,7 @@ class MapScanner extends TileBehavior
 			doSeaport();
 			return;
 		case NEW_BUILDING:
-			doNewBuilding(); //Call the NEW_BUILDING placeholder function
+			doNewBuilding(); // Call the NEW_BUILDING placeholder function
 			return;
 		default:
 			assert false;
@@ -112,9 +112,10 @@ class MapScanner extends TileBehavior
 	boolean setZonePower()
 	{
 		boolean oldPower = city.isTilePowered(xpos, ypos);
-		boolean newPower = (
+		boolean newPower = (           // Include wind power
 			tile == NUCLEAR ||
 			tile == POWERPLANT ||
+			tile == NEW_BUILDING ||    // Addition for Assignment 3
 			city.hasPower(xpos,ypos)
 			);
 
@@ -214,9 +215,12 @@ class MapScanner extends TileBehavior
 	{
 		//Very basic building functionality. Checks for power and does "repair"
 		boolean powerOn = checkZonePower();
+		city.windCount++;   // Addition for Assignment 3
 		if ((city.cityTime % 8) == 0) {
 			repairZone(NEW_BUILDING, 3);
 		}
+		
+		city.powerPlants.add(new CityLocation(xpos, ypos));    // Addition for Assignment 3
 	}
 
 	void doFireStation()
