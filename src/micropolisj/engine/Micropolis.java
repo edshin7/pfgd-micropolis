@@ -2530,7 +2530,7 @@ public class Micropolis
 		checkGrowth();
 
 		int totalZoneCount = resZoneCount + comZoneCount + indZoneCount;
-		int powerCount = nuclearCount + coalCount;
+		int powerCount = nuclearCount + coalCount + windCount;  // Addition for Assignment 3: includes wind power for power count
 
 		int z = cityTime % 64;
 		switch (z) {
