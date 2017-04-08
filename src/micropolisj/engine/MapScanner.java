@@ -211,16 +211,18 @@ class MapScanner extends TileBehavior
 	
 	//Placeholder for a new building
 	//Look to the other do<building name>() functions to guidance on what this function should do.
+	
+	// adjusted for assignment 3: function written to act as an alternative power source
 	void doNewBuilding()
 	{
 		//Very basic building functionality. Checks for power and does "repair"
 		boolean powerOn = checkZonePower();
-		city.windCount++;   // Addition for Assignment 3
+		city.windCount++;   // Addition for Assignment 3: add number of wind farms by one
 		if ((city.cityTime % 8) == 0) {
-			repairZone(NEW_BUILDING, 3);
+			repairZone(NEW_BUILDING, 6);   // changed the scale from 3 to 6
 		}
 		
-		city.powerPlants.add(new CityLocation(xpos, ypos));    // Addition for Assignment 3
+		city.powerPlants.add(new CityLocation(xpos, ypos)); // Addition for Assignment 3: add new building as a power plant
 	}
 
 	void doFireStation()

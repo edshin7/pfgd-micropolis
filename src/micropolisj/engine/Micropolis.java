@@ -537,7 +537,7 @@ public class Micropolis
 		stadiumCount = 0;
 		coalCount = 0;
 		nuclearCount = 0;
-		windCount = 0;   // new Addition for Assignment 3
+		windCount = 0;   // new Addition for Assignment 3: counts number of wind farms (new building)
 		seaportCount = 0;
 		airportCount = 0;
 		powerPlants.clear();
@@ -969,6 +969,7 @@ public class Micropolis
 				isConductive(t) &&
 				t != NUCLEAR &&
 				t != POWERPLANT &&
+				t != NEW_BUILDING &&       // addition for Assignment 3: include wind farms for condition
 				!hasPower(loc.x, loc.y)
 				);
 		}
@@ -2530,7 +2531,8 @@ public class Micropolis
 		checkGrowth();
 
 		int totalZoneCount = resZoneCount + comZoneCount + indZoneCount;
-		int powerCount = nuclearCount + coalCount + windCount;  // Addition for Assignment 3: includes wind power for power count
+		// Addition for Assignment 3: includes wind power for power count
+		int powerCount = nuclearCount + coalCount + windCount;  
 
 		int z = cityTime % 64;
 		switch (z) {

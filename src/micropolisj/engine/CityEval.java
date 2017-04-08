@@ -102,6 +102,7 @@ public class CityEval
 		z += engine.airportCount * 10000;
 		z += engine.coalCount * 3000;
 		z += engine.nuclearCount * 6000;
+		z += engine.windCount * 8000;     // addition for Assignment 3: add wind farms as part of assessment calculation
 		cityAssValue = z * 1000;
 	}
 
